@@ -11,7 +11,7 @@ const userRegister = async (request, response) => {
     return response.send({ resMsg: "User Already Exists" });
   } else {
     //hashing password using bcrypt
-    tempUser.userPassword = bcrypt.hashSync(tempUser.userPassword, saltRound);
+    tempUser.userPassword = bcrypt.hashSync(tempUser.userPassword, 15);
 
     // saving new user in database
     const registredResult = await registredUserCollection.create(tempUser);

@@ -16,6 +16,7 @@ const userModel = mongoose.Schema({
         type : String,
         required : true
     },
+    "isAdmin" : Boolean
 });
 const registredUserCollection = mongoose.model("registredUser", userModel);
 
