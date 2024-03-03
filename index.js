@@ -1,10 +1,10 @@
 const express = require("express");
 const { mongooseConnection } = require("./config/mongooseConnection");
 const userRoute = require("./Router/User.Router");
+const cors = require("cors");
 const appServer = express();
 
 appServer.use(express.json());
-const cors = require("cors");
 appServer.use(
   cors({
     origin: "*",
