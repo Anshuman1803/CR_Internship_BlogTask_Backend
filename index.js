@@ -1,6 +1,7 @@
 const express = require("express");
 const { mongooseConnection } = require("./config/mongooseConnection");
 const userRoute = require("./Router/User.Router");
+const blogRoute = require("./Router/Blog.Router");
 const cors = require("cors");
 const appServer = express();
 
@@ -12,6 +13,7 @@ appServer.use(
 );
 
 appServer.use("/api/user", userRoute);
+appServer.use("/api/blog", blogRoute);
 
 appServer.listen(5000, async () => {
   try {
