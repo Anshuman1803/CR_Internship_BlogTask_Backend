@@ -4,6 +4,7 @@ const userRoute = require("./Router/User.Router");
 const blogRoute = require("./Router/Blog.Router");
 const cors = require("cors");
 const registredUserCollection = require("./model/userModel");
+const blogCollection = require("./model/blogModel");
 const appServer = express();
 
 appServer.use(express.json());
@@ -20,6 +21,12 @@ appServer.get("/api/user/:id", async (request, response) => {
   const id = request.params.id;
   const userDetails = await registredUserCollection.findOne({ _id: id });
   return response.send(userDetails);
+});
+
+appServer.get("/api/blogs/:id", async (request, response) => {
+  const id = request.params.id;
+  const blogDetails = await blogCollection.findOne({ _id: id });
+  return response.send(blogDetails);
 });
 
 appServer.listen(5000, async () => {
