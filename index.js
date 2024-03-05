@@ -20,6 +20,7 @@ appServer.use("/api/blog", blogRoute);
 appServer.get("/api/user/:id", async (request, response) => {
   const id = request.params.id;
   const userDetails = await registredUserCollection.findOne({ _id: id });
+  userDetails.userPassword = undefined;
   return response.send(userDetails);
 });
 
@@ -28,6 +29,11 @@ appServer.get("/api/blogs/:id", async (request, response) => {
   const blogDetails = await blogCollection.findOne({ _id: id });
   return response.send(blogDetails);
 });
+
+appServer.get("/api/blogposts/all", async (request, response) => {
+  const blogDetails = await blogCollection.find({});
+  return response.send(blogDetails)
+})
 
 appServer.listen(5000, async () => {
   try {
