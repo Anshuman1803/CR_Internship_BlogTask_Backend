@@ -1,5 +1,6 @@
 const { createComment } = require("../controller/createBlogComment");
 const { createPost } = require("../controller/createBlogPost");
+const { updatePost } = require("../controller/updatePost");
 const { deleteBlogComment } = require("../controller/deleteBlogComment");
 const { deletePost } = require("../controller/deleteBlogPost");
 const commentCollection = require("../model/blogCommentModel");
@@ -7,6 +8,7 @@ const blogCollection = require("../model/blogModel");
 const route = require("express").Router();
 
 route.post("/create-blog", createPost);
+route.post("/update-blog", updatePost);
 route.post("/delete-blog/:id", deletePost);
 route.post("/comments/create-comment", createComment);
 route.post("/delete-comments/:blogID", deleteBlogComment);
